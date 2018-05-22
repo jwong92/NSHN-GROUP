@@ -18,15 +18,15 @@ We have also implemented security measures to prevent users from manipulating th
 
 Type | Names
 --- | ---
-Programming Languages | * C# * JavaScript * HTML5 * CSS 
-Frameworks | * Bootstrap * MVC * jQuery
-Database | * MSSQL Azure
-IDEs | * Atom * Visual Code * Sublime
+Programming Languages | C#, JavaScript, HTML5, CSS 
+Frameworks | Bootstrap, MVC, jQuery
+Database | MSSQL Azure
+IDEs | Atom, Visual Code, Sublime, Visual Studio
 
 
 ## Contributors
 
-Our group consisted of 5 individuals all coming from a variety of different backgrounds, ranging from designers, to electrical engineers, to scientists. In just a span of 8 months, we were able to collectively put together 10 features. The creators and their associated pages are depicted below:
+Our group consisted of 5 individuals all coming from a variety of different backgrounds, ranging from designers, to electrical engineers, to scientists. In just a span of 8 months, we were able to collectively put together 11 features. The creators and their associated pages are depicted below:
 
 ### Yeganeh Ghasemi
 @hazeoscar
