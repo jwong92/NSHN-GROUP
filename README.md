@@ -2,7 +2,7 @@
 
 ## Description
 
-The North Shore Health Network is currently a group of health centers that have merged to form the North Shore Health Network to better serve the community of the North Shore area. As a group project, we were tasked to create a mock redesign of their current (http://www.nshn.care/, website). Our process began with applying a content inventory, followed by the personification of the potential visitors to the hospital, then a number of card sorts, followed by various responsive wireframes, a mockup, and a theme template. Over the course of 4 months, we were able to deploy our website, found (https://nshn-hospital.azurewebsites.net/, here). 
+The North Shore Health Network is currently a group of health centers that have merged to form the North Shore Health Network to better serve the community of the North Shore area. As a group project, we were tasked to create a mock redesign of their current [website](http://www.nshn.care/, "nshn website"). Our process began with applying a content inventory, followed by the personification of the potential visitors to the hospital, then a number of card sorts, followed by various responsive wireframes, a mockup, and a theme template. Over the course of 4 months, we were able to deploy our website, found [here](https://nshn-hospital.azurewebsites.net/, "mock website"). 
 
 Guided by their belief of community and nature, we redesigned their website to reflect that by utilizing colors found primarily outdoors (shades of blues and greens).
 
