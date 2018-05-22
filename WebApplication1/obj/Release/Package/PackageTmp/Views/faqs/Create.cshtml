@@ -1,0 +1,97 @@
+﻿@model WebApplication1.Models.faq
+
+@{
+    ViewBag.Title = "Create";
+    //layout = "~/views/shared/_layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="main__content">
+    <h2 class="title">Add FAQ</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        if (Session["role"] != null)
+        {
+            if (Session["role"].ToString() == "PAT" || Session["role"].ToString() == "USR")
+            {
+                if (ViewBag.questionAdd != null)
+                {
+                    <h3 class="green">@ViewBag.questionAdd</h3>
+
+                }
+            }
+        }
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.question, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.question, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.question, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @if (Session["role"] != null)
+            {
+                if (Session["role"].ToString() == "ADM")
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.answer, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.answer, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+            }
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.date_created, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.date_created, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.date_created, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            @if (Session["userName"] != null)
+                {
+                <div class="form-group control-label col-md-2 publisher">
+                    Publisher
+                </div>
+                    <div class="col-md-10">
+
+                        <label>@Session["userName"].ToString()</label>
+
+                        @*@Html.DropDownList("publisher_id", null, htmlAttributes: new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(model => model.publisher_id, "", new { @class = "text-danger" })
+                    </div>
+               
+
+            }
+            <div class="form-group control-label col-md-2">
+                Category
+            </div>
+                <div class="col-md-10">
+                    @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                </div>
+            
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 crud__btn">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="crud__links">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

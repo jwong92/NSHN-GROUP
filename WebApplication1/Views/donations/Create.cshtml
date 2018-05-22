@@ -1,0 +1,162 @@
+﻿@model WebApplication1.Models.donation
+
+@{
+    ViewBag.Title = "Create";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+@* RENDER INTRODUCTION *@
+@if (Session["role"] != null)
+{
+    if (Session["role"].ToString() == "USR")
+    {
+        @Html.Action("DonationIntroduction", "Donations")
+    }
+    else if (Session["role"].ToString() == "ADM")
+    {
+
+    }
+}
+else
+{
+    @Html.Action("DonationIntroduction", "Donations")
+}
+
+
+@* IF EXISTING USER *@
+@using (Html.BeginForm("Create", "Donations"))
+{
+    @Html.AntiForgeryToken()
+    <div id="donation-page-body">
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Create Login Credentials</h4>
+                    <p>Use these credentials to login next time.</p>
+                    <p id="error-mssg">@ViewBag.ErrorMssg</p>
+                    <p id="success-mssg">@ViewBag.SuccessMssg</p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.user.username, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.user.username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.user.username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.user.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.user.password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.user.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @* PAYMENT INFORMATION *@
+                    <h4>Account Information</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.fname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.fname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.fname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.lname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.lname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.lname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.city, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.city, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.city, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.province_char, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("province_char", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.province, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3>Payment Information</h3>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.payment_information.credit_card, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.payment_information.credit_card, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.payment_information.credit_card, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.payment_information.ccv, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.payment_information.ccv, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.payment_information.ccv, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.north_shore_accounts.payment_information.exp_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.north_shore_accounts.payment_information.exp_date, new { htmlAttributes = new { @class = "dateTimePicker form-control" } })
+                            @Html.ValidationMessageFor(model => model.north_shore_accounts.payment_information.exp_date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @* DONATION AMOUNT *@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @* SUBMIT BUTTON *@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Donate" class="btn btn-default" id="AnonCreateDonationBtn" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    @*<div>
+        @if (Session["role"] != null)
+        {
+            if (Session["role"].ToString() == "ADM")
+            {
+                <span>@Html.ActionLink("Back to Donors", "Index", "Donations")</span>
+            }
+        }
+    </div>*@
+}
+
+

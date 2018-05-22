@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.news
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+
+}
+<div class="article-background">
+    <div class="container">
+        <h4>@Html.DisplayFor(model => model.title)</h4>
+        <div class="row">
+            <div class="col-sm-12">
+                <small class="font-italic text-muted">
+                    <span>Author: </span>
+                    <span>@Html.DisplayFor(model => model.author)</span> |
+                    <span>Posted Date: </span>
+                    <span>@Html.DisplayFor(model => model.pub_date)</span>
+                </small>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="container">
+        <div class="row">
+            @Html.Action("MainImgs", "news", new { @id = Model.id })
+            <div class="col-md-8 align-self-center">
+                @Html.DisplayFor(model => model.article_summary)
+            </div>
+        </div>
+    </div>
+    <div class="container article-body">
+        <div class="row">
+            <div class="col-12">
+                @Html.DisplayFor(model => model.article_content)
+            </div>
+        </div>
+        <div class="row">
+            @Html.Action("ImagesAllForArticle", "news", new { id = Model.id })
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Edit", "news", new { id = Model.id }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (Session["role"] != null)
+            {
+                if (Session["role"].ToString() == "ADM")
+                {
+                    <input type="submit" value="Edit" class="btn btn-default" />
+                    <span>|</span>
+                }
+            }
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+
+
+@* DISPLAY ADD A COMMENT *@
+@Html.Action("DisplayAddComment", "news", new { id = Model.id })
+</div>

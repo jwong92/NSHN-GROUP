@@ -1,0 +1,129 @@
+﻿.question__bg {
+    padding: 10px;
+    /*background-color: rgba(8, 101, 115, 0.5);*/
+    border: 1.5px solid rgba(34, 150, 109, 0.50);
+    color: #161619;
+    margin: 5px auto;
+    width: 90%;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.25px;
+}
+.question__bg:hover {
+        font-weight: 900;
+    }
+.title {
+    font-size:20px;
+}
+
+.noanswer__bg__title__ADM {
+    padding: 10px;
+    background-color: rgba(146, 20, 47, 0.50);
+    border: 0.5px solid rgba(100, 0, 15, 1);
+    color: #161619;
+    margin: 5px auto;
+    width: 90%;
+}
+
+.question__bg div {
+    font-size: 16px;
+    font-weight: 500;
+}
+.question__heading {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.noanswer__bg__ADM {
+    padding: 10px;
+    /*background-color: rgba(146, 20, 47, 0.50);*/
+    border: 1.5px solid rgba(146, 20, 47, 0.50);
+    color: #161619;
+    margin: 5px auto;
+    width: 90%;
+}
+    .noanswer__bg__ADM:hover {
+        font-weight:900;
+    }
+.question__bg__ADM {
+    padding: 10px;
+    background-color: rgba(34, 150, 109, 0.50);
+    border: 0.25px solid rgba(34, 150, 109, 1);
+    color: #161619;
+    margin: 5px auto;
+    width: 90%;
+}
+.answer__div {
+    width: 90%;
+}
+.category__asnwer__div {
+    font-weight: bolder !important;
+    font-size: 16px;
+}
+.pubisher__div {
+    font-weight: bolder !important;
+    font-size: 10px;
+}
+
+.padding__bottom {
+    margin-bottom: 6px;
+}
+
+.date {
+    font-size: 11px;
+}
+
+.crud__links:hover {
+    font-weight:900;
+    font-size:18px;
+}
+
+.instruction__p {
+    line-height: 1rem;
+}
+
+.green {
+    color:forestgreen;
+}
+button {
+    background:none;
+    border: none;
+   
+}
+
+.fa-chevron-down{
+    margin-left:10px;
+}
+
+.main__content
+{
+    padding-left: 30px;
+}
+
+.crud__btn {
+    margin-top: 6px;
+}
+
+.publisher {
+    margin-bottom: 2px !important;
+}
+.bold {
+    font-weight: 900;
+    padding:0 4px;
+    
+}
+
+.border__bottom {
+    padding-bottom: 15px;
+    margin: 15px 0;
+    border-bottom: 1px solid #161619;
+}
+
+.dept__info {
+    font-size: 14px;
+}
+
+.sites__intro {
+    font-size:18px;
+    font-weight:900;
+}

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SuperWomanModelStoreContainer" CdmEntityContainer="NSHNContext">
+    <EntitySetMapping Name="provinces">
+      <EntityTypeMapping TypeName="SuperWomanModel.province">
+        <MappingFragment StoreEntitySet="provinces">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="SuperWomanModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="role_code" ColumnName="role_code" />
+          <ScalarProperty Name="role_description" ColumnName="role_description" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="SuperWomanModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_role" ColumnName="user_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="images">
+      <EntityTypeMapping TypeName="SuperWomanModel.image">
+        <MappingFragment StoreEntitySet="images">
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="is_main" ColumnName="is_main" />
+          <ScalarProperty Name="img_src" ColumnName="img_src" />
+          <ScalarProperty Name="news_article_id" ColumnName="news_article_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="SuperWomanModel.news">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="article_summary" ColumnName="article_summary" />
+          <ScalarProperty Name="article_content" ColumnName="article_content" />
+          <ScalarProperty Name="pub_date" ColumnName="pub_date" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comments">
+      <EntityTypeMapping TypeName="SuperWomanModel.comment">
+        <MappingFragment StoreEntitySet="comments">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="comm_date" ColumnName="comm_date" />
+          <ScalarProperty Name="comment1" ColumnName="comment" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bucketLists">
+      <EntityTypeMapping TypeName="SuperWomanModel.bucketList">
+        <MappingFragment StoreEntitySet="bucketList">
+          <ScalarProperty Name="visited" ColumnName="visited" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="SuperWomanModel.city">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="country_code" ColumnName="country_code" />
+          <ScalarProperty Name="Mayor" ColumnName="Mayor" />
+          <ScalarProperty Name="Population" ColumnName="Population" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="SuperWomanModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="established" ColumnName="established" />
+          <ScalarProperty Name="Continent" ColumnName="Continent" />
+          <ScalarProperty Name="Population" ColumnName="Population" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images_Table">
+      <EntityTypeMapping TypeName="SuperWomanModel.Images_Table">
+        <MappingFragment StoreEntitySet="Images_Table">
+          <ScalarProperty Name="Caption_Text" ColumnName="Caption_Text" />
+          <ScalarProperty Name="Img_Filename" ColumnName="Img_Filename" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="SuperWomanModel.message">
+        <MappingFragment StoreEntitySet="messages">
+          <ScalarProperty Name="reply_id" ColumnName="reply_id" />
+          <ScalarProperty Name="sent_date" ColumnName="sent_date" />
+          <ScalarProperty Name="message_body" ColumnName="message_body" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="SuperWomanModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="SuperWomanModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="site_id" ColumnName="site_id" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="dept_extension" ColumnName="dept_extension" />
+          <ScalarProperty Name="dept_description" ColumnName="dept_description" />
+          <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sites">
+      <EntityTypeMapping TypeName="SuperWomanModel.site">
+        <MappingFragment StoreEntitySet="site">
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="feedbacks">
+      <EntityTypeMapping TypeName="SuperWomanModel.feedback">
+        <MappingFragment StoreEntitySet="feedback">
+          <ScalarProperty Name="date_submitted" ColumnName="date_submitted" />
+          <ScalarProperty Name="problem" ColumnName="problem" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="suggestion" ColumnName="suggestion" />
+          <ScalarProperty Name="date_location" ColumnName="date_location" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvailableTests">
+      <EntityTypeMapping TypeName="SuperWomanModel.AvailableTest">
+        <MappingFragment StoreEntitySet="AvailableTests">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabTestResults">
+      <EntityTypeMapping TypeName="SuperWomanModel.LabTestResult">
+        <MappingFragment StoreEntitySet="LabTestResults">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="LabTestsConductedId" ColumnName="LabTestsConductedId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabTestsConducteds">
+      <EntityTypeMapping TypeName="SuperWomanModel.LabTestsConducted">
+        <MappingFragment StoreEntitySet="LabTestsConducted">
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="SuperWomanModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tours">
+      <EntityTypeMapping TypeName="SuperWomanModel.Tour">
+        <MappingFragment StoreEntitySet="Tours">
+          <ScalarProperty Name="GuideName" ColumnName="GuideName" />
+          <ScalarProperty Name="TourName" ColumnName="TourName" />
+          <ScalarProperty Name="TourTime" ColumnName="TourTime" />
+          <ScalarProperty Name="TourID" ColumnName="TourID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faqs">
+      <EntityTypeMapping TypeName="SuperWomanModel.faq">
+        <MappingFragment StoreEntitySet="faqs">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="publisher_id" ColumnName="publisher_id" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TourGuides">
+      <EntityTypeMapping TypeName="SuperWomanModel.TourGuide">
+        <MappingFragment StoreEntitySet="TourGuides">
+          <ScalarProperty Name="GuideSuitability" ColumnName="GuideSuitability" />
+          <ScalarProperty Name="GuideSpeciality" ColumnName="GuideSpeciality" />
+          <ScalarProperty Name="GuideName" ColumnName="GuideName" />
+          <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TourRequests">
+      <EntityTypeMapping TypeName="SuperWomanModel.TourRequest">
+        <MappingFragment StoreEntitySet="TourRequests">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TourID" ColumnName="TourID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volunteers">
+      <EntityTypeMapping TypeName="SuperWomanModel.Volunteer">
+        <MappingFragment StoreEntitySet="Volunteers">
+          <ScalarProperty Name="dateavailable" ColumnName="dateavailable" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="StAddress" ColumnName="StAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Dob" ColumnName="Dob" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="VolunteerID" ColumnName="VolunteerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appointments">
+      <EntityTypeMapping TypeName="SuperWomanModel.appointment">
+        <MappingFragment StoreEntitySet="appointment">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="appointment_date" ColumnName="appointment_date" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="appointment_id" ColumnName="appointment_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="donations">
+      <EntityTypeMapping TypeName="SuperWomanModel.donation">
+        <MappingFragment StoreEntitySet="donations">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="north_shore_accounts">
+      <EntityTypeMapping TypeName="SuperWomanModel.north_shore_accounts">
+        <MappingFragment StoreEntitySet="north_shore_accounts">
+          <ScalarProperty Name="payment_info" ColumnName="payment_info" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="province_char" ColumnName="province_char" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payment_information">
+      <EntityTypeMapping TypeName="SuperWomanModel.payment_information">
+        <MappingFragment StoreEntitySet="payment_information">
+          <ScalarProperty Name="exp_date" ColumnName="exp_date" />
+          <ScalarProperty Name="ccv" ColumnName="ccv" />
+          <ScalarProperty Name="credit_card" ColumnName="credit_card" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

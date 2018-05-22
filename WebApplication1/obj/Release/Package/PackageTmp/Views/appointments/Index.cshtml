@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplication1.Models.appointment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["userId"] != null)
+{
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Appointment Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (Convert.ToString(Session["role"]) == "ADM" && item.user_id == Convert.ToInt64(Session["userId"]))
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.full_name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.appointment_date)</td>
+                                <td>
+                                    @Html.ActionLink("View", "Details", new { id = item.appointment_id }, new { @class = "btn btn-large feedback_button_view feedback_button_actions" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.appointment_id }, new { @class = "btn btn-dark btn-large feedback_button_actions" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.appointment_id }, new { @class = "btn btn-danger btn-large" })
+                                </td>
+                            </tr>
+                        }
+                        else 
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.full_name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.appointment_date)</td>
+                                <td>
+                                    @Html.ActionLink("View", "Details", new { id = item.appointment_id }, new { @class = "btn btn-large feedback_button_view feedback_button_actions" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.appointment_id }, new { @class = "btn btn-dark btn-large feedback_button_actions" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.appointment_id }, new { @class = "btn btn-danger btn-large" })
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Create", "appointments", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid" style="background-color: #076473; color: white; border-radius: 10px;">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2%;">
+                <h2 class="text-center">BOOK APPOINTMENT</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-bottom: 2%;">
+                <div class="form-group">
+                    <label for="full_name">1. Please Enter Your Full Name: </label>
+                    <input class="form-control" style="min-width: 100%" type="text" name="full_name" id="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone_number">2. Please Enter Your Phone Number: </label>
+                    <input class="form-control" style="min-width: 100%" type="number" name="phone_number" id="phone_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointment_date">3. Please choose your preferred appointment date: </label>
+                    <input class="form-control" style="min-width: 100%" type="date" name="appointment_date" id="appointment_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="detail">4. Please give us some details about your visit:</label>
+                    <textarea class="form-control" style="min-width: 100%" rows="5" name="detail" id="detail"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="d-inline-block btn feedback_button_submit" value="Submit">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+}
+
+

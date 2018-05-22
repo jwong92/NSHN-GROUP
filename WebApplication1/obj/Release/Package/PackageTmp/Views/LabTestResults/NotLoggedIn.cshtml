@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Unauthorized";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-xs-12 text-center">
+        <h1>HEY! NO PEEKING!</h1>
+        <p>Unfortunately, you're not authorized to be here.</p>
+        <p>Consider making an account, or contacting the website administrator for access.</p>
+        <img id="error-img" src="~/Images/restricted.svg" />
+        <div>
+            @Html.ActionLink("Back to Safety", "Index", "Navigate", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+</div>

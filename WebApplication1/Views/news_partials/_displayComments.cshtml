@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebApplication1.Models.User_News_Comments>
+
+@foreach (var item in Model)
+{
+    <div class="media">
+        <div class="media-body">
+            <h5 class="mt-0">@item.user.username</h5>
+            @item.comment.comment1
+        </div>
+    </div>
+}

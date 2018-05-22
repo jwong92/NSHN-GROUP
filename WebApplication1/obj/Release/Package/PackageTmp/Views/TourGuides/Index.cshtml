@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.TourGuide>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GuideName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuideSpeciality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuideSuitability)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuideName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuideSpeciality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuideSuitability)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GuideID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GuideID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GuideID })
+        </td>
+    </tr>
+}
+
+</table>

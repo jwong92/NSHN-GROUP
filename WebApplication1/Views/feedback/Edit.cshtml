@@ -1,0 +1,60 @@
+﻿@model WebApplication1.Models.feedback
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid" style="background-color: #076473; color: white; border-radius: 10px;">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2%;">
+                <h2 class="text-center">FEEDBACK FORM</h2>
+                @Html.HiddenFor(model => model.feedback_id)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-bottom: 2%;">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.date_location)
+                    @Html.EditorFor(model => model.date_location, new { htmlAttributes = new { @class = "form-control feedback_field" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.problem)
+                    @Html.EditorFor(model => model.problem, new { htmlAttributes = new { @class = "form-control feedback_field" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.suggestion)
+                    @Html.EditorFor(model => model.suggestion, new { htmlAttributes = new { @class = "form-control feedback_field" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.detail)
+                    @Html.EditorFor(model => model.detail, new { htmlAttributes = new { @class = "form-control feedback_field" } })
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 text-center" style="margin-bottom: 2%;">
+                        <p>
+                            <input type="submit" value="Save" class="btn btn-success btn-large feedback_button" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-light btn-large feedback_button" })
+                        </p>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<WebApplication1.Models.image>
+@foreach (var item in Model)
+{
+<div class="col-lg-3 text-center">
+    <img class="article_images" src="~/News_Images/@item.news.id.ToString()/@item.img_src.ToString()" alt="Generic placeholder image">
+    <p class="font-italic font-weight-light" id="display-caption">@Html.DisplayFor(model => item.caption)</p>
+</div>
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "LandingPage";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="container">
+           @* <div class="row">
+               <div class="col-md-12">
+                  <h1>
+                        Welcome back @if (Session["userName"] != null)
+            {@Session["userName"].ToString();
+    } </h1>
+                </div>
+        </div>*@
+        @* END ROW CONTAINING HEADER WELCOME *@
+        <div class="row main__content">
+            <div class="col-md-12">
+                <div class="welcome-image-container">
+                    <img src="~/Images/welcomeBannerLight.svg" alt="Welcome image" id="welcome-img"/>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2>NSHN Dashboard</h2>
+                <p>This is your dashboard! On the left, you'll find quick links to access features only found for registered users.</p>
+                <p>At any time, you can go back to the home page by clicking on the NSHN logo. Alternatively, you can log out and you will be redirected to the login page.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

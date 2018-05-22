@@ -1,0 +1,79 @@
+﻿
+@model WebApplication1.Models.message
+
+@{
+    ViewBag.Title = "Details";
+    Model.reply_id = Model.Id;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.message_body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.message_body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sent_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sent_date)
+        </dd>
+    </dl>
+    <hr />
+    @using (Html.BeginForm("Reply", "messages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <div>@Html.HiddenFor(model => model.first_name, new { Value="NSHN" })</div>
+            <div>@Html.HiddenFor(model => model.last_name, new { Value="Hospital" })</div>
+            <div>@Html.HiddenFor(model => model.email_address, new { Value="contactus@nshn.com" })</div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.message_body, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.message_body, new { htmlAttributes = new { @class = "form-control", @Value = "" } })
+                    @Html.ValidationMessageFor(model => model.message_body, "", new { @class = "text-danger"})
+                </div>
+                <div>@Html.HiddenFor(model => model.reply_id)</div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Reply" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

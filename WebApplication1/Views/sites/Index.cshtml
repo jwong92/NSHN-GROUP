@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.site>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="main__content">
+<h2 class="title">Hospital Sites</h2>
+<h3 class="sites__intro">The NSHN is a unified organization that provides health care services at three sites:</h3>
+
+@foreach (var item in Model)
+{
+    if (item.name == "Blind River Site")
+    {
+        <div class="row border__bottom">
+            <div class="map-responsive col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.1604197833417!2d-82.92625724916364!3d46.18736629281624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d31427b66416a73%3A0xad624bcd8a021f55!2s525+Causley+St%2C+Blind+River%2C+ON%2C+Canada!5e0!3m2!1sen!2sus!4v1525994925209" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-5 col-lg-5">
+                <p><span class="bold">@Html.DisplayNameFor(model => model.name):</span> @Html.DisplayFor(modelItem => item.name)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.phone):</span> @Html.DisplayFor(modelItem => item.phone)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.address):</span> @Html.DisplayFor(modelItem => item.address), @Html.DisplayFor(modelItem => item.city), @Html.DisplayFor(modelItem => item.province), @Html.DisplayFor(modelItem => item.postal_code)</p>
+                <p></p>
+            </div>
+        </div>
+    }
+    if (item.name == "Thessalon Site")
+    {
+        <div class="row col-lg-12 border__bottom">
+            <div class="map-responsive col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.356424338955!2d-83.56465128438546!3d46.263020579118574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d36be9c804644ff%3A0x1fb4fd3f0c8e607f!2s135+Dawson+St%2C+Thessalon%2C+ON+P0R+1L0!5e0!3m2!1sen!2sca!4v1525996835817" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-5 col-lg-5">
+                <p><span class="bold">@Html.DisplayNameFor(model => model.name):</span> @Html.DisplayFor(modelItem => item.name)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.phone):</span> @Html.DisplayFor(modelItem => item.phone)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.address):</span> @Html.DisplayFor(modelItem => item.address), @Html.DisplayFor(modelItem => item.city), @Html.DisplayFor(modelItem => item.province), @Html.DisplayFor(modelItem => item.postal_code)</p>
+                <p></p>
+            </div>
+        </div>
+    }
+    if (item.name == "Richards Landing Site")
+    {
+        <div class="row col-lg-12 border__bottom">
+            <div class="map-responsive col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2756.822113160576!2d-84.03736244915993!3d46.2935080856422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d366165ff355375%3A0x1a3278d73a1e5bc4!2s1180+Richards+St%2C+Richards+Landing%2C+ON+P0R+1J0!5e0!3m2!1sen!2sca!4v1525997182528" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-5 col-lg-5">
+                <p><span class="bold">@Html.DisplayNameFor(model => model.name):</span> @Html.DisplayFor(modelItem => item.name)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.phone):</span> @Html.DisplayFor(modelItem => item.phone)</p>
+                <p><span class="bold">@Html.DisplayNameFor(model => model.address):</span> @Html.DisplayFor(modelItem => item.address), @Html.DisplayFor(modelItem => item.city), @Html.DisplayFor(modelItem => item.province), @Html.DisplayFor(modelItem => item.postal_code)</p>
+                <p></p>
+            </div>
+        </div>
+    }
+ }
+</div>
+

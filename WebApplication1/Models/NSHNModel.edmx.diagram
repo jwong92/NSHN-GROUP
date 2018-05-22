@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d44156ffdedb471b97ded75133bba615" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="SuperWomanModel.province" Width="1.5" PointX="4.125" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperWomanModel.role" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperWomanModel.user" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="SuperWomanModel.users_user_role_fk" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SuperWomanModel.image" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.news" Width="1.5" PointX="2.75" PointY="7.75" />
+        <AssociationConnector Association="SuperWomanModel.image_news_article_id_fk" />
+        <EntityTypeShape EntityType="SuperWomanModel.comment" Width="1.5" PointX="8.875" PointY="4.25" />
+        <EntityTypeShape EntityType="SuperWomanModel.bucketList" Width="1.5" PointX="7.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.city" Width="1.5" PointX="13" PointY="0.875" />
+        <EntityTypeShape EntityType="SuperWomanModel.country" Width="1.5" PointX="10.75" PointY="0.875" />
+        <EntityTypeShape EntityType="SuperWomanModel.Images_Table" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.message" Width="1.5" PointX="6.25" PointY="5.875" />
+        <AssociationConnector Association="SuperWomanModel.cities_country_code_fk" />
+        <AssociationConnector Association="SuperWomanModel.FK_messages_To_messages" />
+        <EntityTypeShape EntityType="SuperWomanModel.category" Width="1.5" PointX="2.375" PointY="5.5" />
+        <EntityTypeShape EntityType="SuperWomanModel.department" Width="1.5" PointX="14.625" PointY="11" />
+        <EntityTypeShape EntityType="SuperWomanModel.site" Width="1.5" PointX="12.375" PointY="11" />
+        <AssociationConnector Association="SuperWomanModel.site_id_sd_fk" />
+        <EntityTypeShape EntityType="SuperWomanModel.feedback" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.AvailableTest" Width="1.5" PointX="6" PointY="19.625" />
+        <EntityTypeShape EntityType="SuperWomanModel.LabTestResult" Width="1.5" PointX="10.5" PointY="16.875" />
+        <EntityTypeShape EntityType="SuperWomanModel.LabTestsConducted" Width="1.5" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="SuperWomanModel.FK_LabTestsConducted_ToAvailableTests" />
+        <AssociationConnector Association="SuperWomanModel.FK_LabTestResults_ToLabTestsConducted" />
+        <AssociationConnector Association="SuperWomanModel.FK__LabTestsC__Docto__37DB1BFD" />
+        <EntityTypeShape EntityType="SuperWomanModel.database_firewall_rules" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.Tour" Width="1.5" PointX="6.25" PointY="26.125" />
+        <EntityTypeShape EntityType="SuperWomanModel.faq" Width="1.5" PointX="0.625" PointY="4.625" />
+        <AssociationConnector Association="SuperWomanModel.category_faq_cf_fk" />
+        <AssociationConnector Association="SuperWomanModel.username_faq_uf_fk" />
+        <EntityTypeShape EntityType="SuperWomanModel.TourGuide" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.TourRequest" Width="1.5" PointX="8.875" PointY="14" />
+        <EntityTypeShape EntityType="SuperWomanModel.Volunteer" Width="1.5" PointX="0.75" PointY="11.75" />
+        <AssociationConnector Association="SuperWomanModel.FK__TourReque__TourI__4EBE8155" />
+        <AssociationConnector Association="SuperWomanModel.FK__TourReque__UserI__53833672" />
+        <EntityTypeShape EntityType="SuperWomanModel.appointment" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.donation" Width="1.5" PointX="8.625" PointY="25.375" />
+        <EntityTypeShape EntityType="SuperWomanModel.north_shore_accounts" Width="2.375" PointX="5.5" PointY="0.75" />
+        <EntityTypeShape EntityType="SuperWomanModel.payment_information" Width="1.5" PointX="4.125" PointY="28.125" />
+        <AssociationConnector Association="SuperWomanModel.donations_account_id_fk" />
+        <AssociationConnector Association="SuperWomanModel.north_shore_accounts_fk" />
+        <AssociationConnector Association="SuperWomanModel.north_shore_accounts_province_fk" />
+        <AssociationConnector Association="SuperWomanModel.north_shore_accounts_user_id_fk" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

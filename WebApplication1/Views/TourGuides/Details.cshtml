@@ -1,0 +1,43 @@
+﻿@model WebApplication1.Models.TourGuide
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TourGuide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideSpeciality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideSpeciality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideSuitability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideSuitability)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GuideID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

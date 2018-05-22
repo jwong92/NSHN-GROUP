@@ -1,0 +1,156 @@
+﻿@model IEnumerable<WebApplication1.Models.faq>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+
+    <div class="main__content">
+    <h2 class="title">FAQ</h2>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Search Questions: @Html.TextBox("searchFAQ")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+    @if (Session["role"] != null)
+    {
+        if (Session["role"].ToString() == "PAT" || Session["role"].ToString() == "USR")
+        {
+            <div class="col-lg-12 col-md-12 col-sm-12 instruction__p"></div>
+            <p>
+                Would you like to ask a new question? <span class="crud__links">@Html.ActionLink("Add a FAQ", "Create")</span>
+            </p>
+        }
+        if (Session["role"].ToString() == "ADM")
+        {
+            <div class="col-lg-12 col-md-12 col-sm-12 instruction__p"></div>
+            <p>Click on each question to Edit, Delete or answer them using the links provided.</p>
+            <p>
+                Would you like to add a new question? <span class="crud__links">@Html.ActionLink("Add a FAQ", "Create")</span>
+            </p>
+        }
+    }
+
+    @if (Session["role"] != null)
+    {
+        if (Session["role"].ToString() == "ADM")
+        {
+
+            <div class="row question__bg__ADM">
+                <h2 class="question__heading">Answered Questions:</h2>
+            </div>
+        }
+    }
+
+    @foreach (var item in Model)
+    {
+        if (item.answer != null)
+        {
+
+
+            <div class="row question__bg button__div">
+                @Html.DisplayFor(modelItem => item.question)<i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <div class="answer__div">
+                <div class="row padding__bottom">
+                    <div class="col-sm-12 col-md-12 col-lg-12 category__asnwer__div">
+                        Category: @Html.DisplayFor(modelItem => item.category.name)
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        @Html.DisplayFor(modelItem => item.answer)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 pubisher__div">
+                        Publisher: @Html.DisplayFor(modelItem => item.user.username) | @Html.DisplayNameFor(model => model.date_created) : @Html.DisplayFor(modelItem => item.date_created)
+                    </div>
+                </div>
+                @if (Session["role"] != null)
+                    {
+                        if (Session["role"].ToString() == "ADM")
+                        {
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="crud__links">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+
+
+        }
+    }
+
+
+
+
+    @if (Session["role"] != null)
+    {
+
+        if (Session["role"].ToString() == "ADM")
+        {
+
+            <div class="row noanswer__bg__title__ADM">
+                <h2 class="question__heading">Waiting for Answers:</h2>
+            </div>
+            foreach (var item in Model)
+            {
+                if (item.answer == null)
+                {
+                    <div class="row noanswer__bg__ADM button__div">
+                        @Html.DisplayFor(modelItem => item.question)<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="answer__div">
+                        <div class="row padding__bottom">
+                            <div class="col-sm-12 col-md-12 col-lg-12 category__asnwer__div">
+                                Category: @Html.DisplayFor(modelItem => item.category.name)
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                @Html.DisplayFor(modelItem => item.answer)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 pubisher__div">
+                                Publisher: @Html.DisplayFor(modelItem => item.user.username) | @Html.DisplayNameFor(model => model.date_created) : @Html.DisplayFor(modelItem => item.date_created)
+                            </div>
+                        </div>
+                        @if (Session["role"] != null)
+                        {
+                            if (Session["role"].ToString() == "ADM")
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class="crud__links">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+
+                }
+            }
+
+        }
+    }
+</div>
+
+
+
+
+

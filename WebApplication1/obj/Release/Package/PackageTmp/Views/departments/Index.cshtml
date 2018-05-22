@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Models.department>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_AdminDash.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="main__content">
+    <h2 class="title">Hospital Departments</h2>
+    @if (Session["role"] != null)
+     {
+        if (Session["role"].ToString() == "ADM")
+        {
+            <p>
+                Would you like to add a new department? <span class="crud__links">@Html.ActionLink("Add Department", "Create")</span>
+            </p>
+        }
+     }
+
+    @using (Html.BeginForm())
+     {
+        <p>
+            Search: @Html.TextBox("searchDepartment")
+            <input type="submit" value="Search" />
+        </p>
+     }
+
+        @foreach (var item in Model)
+        {
+            <div class="border__bottom">
+                <div class="row bold col-md-12 col-sm-12">@Html.DisplayFor(modelItem => item.dept_name)</div>
+                <div class="row col-md-12 col-sm-12 col-xsm-4 dept__info">
+                    <span class="bold">@Html.DisplayNameFor(model => model.site.phone):</span> @Html.DisplayFor(model => item.site.phone)  |
+                    <span class="bold">@Html.DisplayNameFor(model => model.dept_extension):</span> @Html.DisplayFor(modelItem => item.dept_extension) |
+                    <span class="bold">Site Location:</span> @Html.DisplayFor(modelItem => item.site.name)
+                </div>
+                <div class="row col-md-11 col-lg-9">
+                    <div>@Html.DisplayFor(modelItem => item.dept_description)</div>
+                </div>
+                <div class="pubisher__div">@Html.DisplayNameFor(model => model.date_added): @Html.DisplayFor(modelItem => item.date_added) </div>
+
+
+                @if (Session["role"] != null)
+
+                {
+                if (Session["role"].ToString() == "ADM")
+                {
+                <div class="crud__links">
+                    <div>@Html.ActionLink("Edit", "Edit", new { id = item.dept_id })</div>
+                    <div>@Html.ActionLink("Details", "Details", new { id = item.dept_id })</div>
+                    <div>@Html.ActionLink("Delete", "Delete", new { id = item.dept_id })</div>
+                </div>
+                }
+                }
+            </div>
+
+        }
+
+    </div>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Missing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-xs-12 text-center">
+        <h2>404 Not Found</h2>
+        <p>We're sorry, the requested URL could be found on this server...</p>
+        <img id="error-img" src="~/Images/questionMark.png" />
+        <div>
+            @Html.ActionLink("Back to Safety", "Index", "Navigate", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+</div>

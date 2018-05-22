@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication1.Models.message>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Messages</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.message_body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sent_date)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.message_body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sent_date)
+            </td>
+
+            <td>
+                @Html.ActionLink("Reply", "Reply", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

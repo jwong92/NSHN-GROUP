@@ -1,0 +1,60 @@
+﻿@model WebApplication1.Models.faq
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="main__content">
+    <h2 class="title">FAQ Detail</h2>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.question)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.question)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.answer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.answer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.date_created)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date_created)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.category.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.publisher_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user.username)
+            </dd>
+
+        </dl>
+
+        <p class="crud__links">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

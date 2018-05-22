@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication1.Models.donation>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="container">
+    @* CREATE NEW DONOR BUTTON *@
+    <div class="row donation-index-row d-flex justify-content-end">
+        @Html.ActionLink("Create A New Donor", "Create", null, htmlAttributes: new { @class = "btn" })
+    </div>
+    @* DONOR INFORMATION *@
+    <div class="row donation-index-row">
+        <h2>Donors Information</h2>
+        <table class="table table-hover table-responsive-lg">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.id)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.account_id)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.north_shore_accounts.fname)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.north_shore_accounts.lname)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.amount)
+                </th>
+                <th scope="col">
+                    Donor Options
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="row">
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.north_shore_accounts.fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.north_shore_accounts.lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+@*@Html.ActionLink("See All Accounts", "AcctPayInfo")*@

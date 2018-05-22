@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_IndexLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["donated"] != null)
+{
+    if (Session["donated"].ToString() == "true")
+    {
+        <p class="text-center">
+            @Html.Action("Thanks", "Donations")
+        </p>
+    }
+
+    Session["donated"] = "";
+}
+
+@* START HEADER IMAGE *@
+<div>
+    <div class="full-width">
+        @Html.Action("_BannerImage", "Navigate")
+    </div>
+</div>
+
+@* START NEWS CONTAINER *@
+<h2 class="mt-5">News</h2>
+<div class="container">
+    <div class="card-deck">
+        @Html.Action("GetIndexArticle", "news")
+    </div>
+</div>

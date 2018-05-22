@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication1.Models.news>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDash.cshtml";
+}
+
+<div class="container">
+    <h2>Index</h2>
+    @if (Session["role"] != null)
+    {
+        if (Session["role"].ToString() == "ADM")
+        {
+            <p>
+                @Html.ActionLink("Write New Article", "Create")
+            </p>
+        }
+    }
+
+    @* IF ADMIN, ALLOW VIEW OF THE EDIT/DELETE/ADD BUTTONS *@
+    @foreach (var item in Model)
+    {
+        if (Session["role"] != null)
+        {
+            if (Session["role"].ToString() == "ADM")
+            {
+                <ul class="list-unstyled">
+                    <li class="media rounded border border-secondary bg-white align-items-center news-list-item row">
+                        @Html.Action("MainImgs", "news", new { id = item.id })
+                        <div class="col-lg-9 media-body">
+                            <h5 class="mt-0 mb-1">@Html.DisplayFor(model => item.title)</h5>
+                            @Html.DisplayFor(model => item.article_summary)
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            }
+            @* IF USER, ONLY ALLOW VIEW OF THE ARTICLES *@
+            else if (Session["role"].ToString() == "USR")
+            {
+                <div class="article-list-margin list-group">
+                    <a href="@Url.Action("Details", "news", new { id = item.id })" class="list-group-item list-group-item-action flex-column align-items-start ml-2">
+                        <ul class="list-unstyled">
+                            <li class="media align-items-center row">
+                                @Html.Action("MainImgs", "news", new { id = item.id })
+                                <div class="col-lg-9 media-body">
+                                    <h5 class="mb-1">@Html.DisplayFor(model => item.title)</h5>
+                                    <p class="mb-1">@Html.DisplayFor(model => item.article_summary)</p>
+                                    <small><span>By: </span><strong>@Html.DisplayFor(model => item.author)</strong></small>
+                                    <small><span>Published: </span><strong>@Html.DisplayFor(model => item.pub_date)</strong></small>
+                                </div>
+                            </li>
+                        </ul>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="article-list-margin list-group">
+                <a href="@Url.Action("Details", "news", new { id = item.id })" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <ul class="list-unstyled">
+                        <li class="media align-items-center row">
+                            @Html.Action("MainImgs", "news", new { id = item.id })
+                            @*<img class="mr-3 article_images" src="~/News_Images/@item.id.ToString()/@item.img_src.ToString()" alt="Generic placeholder image">*@
+                            <div class="col-lg-9 media-body">
+                                <h5 class="mb-1">@Html.DisplayFor(model => item.title)</h5>
+                                <p class="mb-1">@Html.DisplayFor(model => item.article_summary)</p>
+                                <small><span>By: </span><strong>@Html.DisplayFor(model => item.author)</strong></small>
+                                <small><span>Published: </span><strong>@Html.DisplayFor(model => item.pub_date)</strong></small>
+                            </div>
+                        </li>
+                    </ul>
+                </a>
+            </div>
+        }
+    }
+</div>

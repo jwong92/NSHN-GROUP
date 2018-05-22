@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuperWomanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="appointment">
+    <Key>
+      <PropertyRef Name="appointment_id" />
+    </Key>
+    <Property Name="appointment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="phone_number" Type="int" Nullable="false" />
+    <Property Name="appointment_date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="AvailableTests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="bucketList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="visited" Type="bit" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Population" Type="int" />
+    <Property Name="Mayor" Type="varchar" MaxLength="50" />
+    <Property Name="country_code" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="comm_date" Type="datetime" Nullable="false" />
+    <Property Name="article_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Population" Type="int" />
+    <Property Name="Continent" Type="varchar" MaxLength="50" />
+    <Property Name="established" Type="date" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="dept_id" />
+    </Key>
+    <Property Name="dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dept_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="dept_description" Type="varchar" MaxLength="2000" />
+    <Property Name="dept_extension" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="date_added" Type="datetime" />
+    <Property Name="site_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="donations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="account_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="faqs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="varchar(max)" Nullable="false" />
+    <Property Name="answer" Type="varchar(max)" />
+    <Property Name="date_created" Type="datetime" />
+    <Property Name="publisher_id" Type="int" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="feedback">
+    <Key>
+      <PropertyRef Name="feedback_id" />
+    </Key>
+    <Property Name="feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="date_location" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="suggestion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="problem" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="date_submitted" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="news_article_id" Type="int" Nullable="false" />
+    <Property Name="img_src" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="caption" Type="varchar" MaxLength="200" />
+    <Property Name="is_main" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Img_Filename" Type="varchar" MaxLength="1000" />
+    <Property Name="Caption_Text" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="LabTestResults">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LabTestsConductedId" Type="int" Nullable="false" />
+    <Property Name="Result" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="LabTestsConducted">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoctorId" Type="int" Nullable="false" />
+    <Property Name="TestId" Type="int" Nullable="false" />
+    <Property Name="TestDate" Type="date" />
+  </EntityType>
+  <EntityType Name="messages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="email_address" Type="varchar" MaxLength="50" />
+    <Property Name="message_body" Type="varchar(max)" />
+    <Property Name="sent_date" Type="datetime" Nullable="false" />
+    <Property Name="reply_id" Type="int" />
+  </EntityType>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" Nullable="false" />
+    <Property Name="pub_date" Type="datetime" Nullable="false" />
+    <Property Name="article_content" Type="varchar(max)" Nullable="false" />
+    <Property Name="article_summary" Type="varchar(max)" Nullable="false" />
+    <Property Name="author" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="north_shore_accounts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="fname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="city" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="province_char" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="10" />
+    <Property Name="payment_info" Type="int" />
+  </EntityType>
+  <EntityType Name="payment_information">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="credit_card" Type="varchar" MaxLength="20" />
+    <Property Name="ccv" Type="varchar" MaxLength="5" />
+    <Property Name="exp_date" Type="date" />
+  </EntityType>
+  <EntityType Name="provinces">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="role_code" />
+    </Key>
+    <Property Name="role_code" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="role_description" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="site">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="province" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="postal_code" Type="char" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="TourGuides">
+    <Key>
+      <PropertyRef Name="GuideID" />
+    </Key>
+    <Property Name="GuideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuideName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="GuideSpeciality" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="GuideSuitability" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TourRequests">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TourID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tours">
+    <Key>
+      <PropertyRef Name="TourID" />
+    </Key>
+    <Property Name="TourID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TourTime" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="TourName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="GuideName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_role" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Volunteers">
+    <Key>
+      <PropertyRef Name="VolunteerID" />
+    </Key>
+    <Property Name="VolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Dob" Type="datetime" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="StAddress" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Reason" Type="text" />
+    <Property Name="skills" Type="varchar" MaxLength="255" />
+    <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="dateavailable" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SuperWoman.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="category_faq_cf_fk">
+    <End Role="categories" Type="Self.categories" Multiplicity="1" />
+    <End Role="faqs" Type="Self.faqs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="faqs">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cities_country_code_fk">
+    <End Role="country" Type="Self.country" Multiplicity="0..1" />
+    <End Role="cities" Type="Self.cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="cities">
+        <PropertyRef Name="country_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donations_account_id_fk">
+    <End Role="north_shore_accounts" Type="Self.north_shore_accounts" Multiplicity="1" />
+    <End Role="donations" Type="Self.donations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="north_shore_accounts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="donations">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LabTestsC__Docto__37DB1BFD">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="LabTestsConducted" Type="Self.LabTestsConducted" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LabTestsConducted">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TourReque__TourI__4EBE8155">
+    <End Role="Tours" Type="Self.Tours" Multiplicity="1" />
+    <End Role="TourRequests" Type="Self.TourRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tours">
+        <PropertyRef Name="TourID" />
+      </Principal>
+      <Dependent Role="TourRequests">
+        <PropertyRef Name="TourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TourReque__UserI__53833672">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="TourRequests" Type="Self.TourRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TourRequests">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabTestResults_ToLabTestsConducted">
+    <End Role="LabTestsConducted" Type="Self.LabTestsConducted" Multiplicity="1" />
+    <End Role="LabTestResults" Type="Self.LabTestResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LabTestsConducted">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabTestResults">
+        <PropertyRef Name="LabTestsConductedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabTestsConducted_ToAvailableTests">
+    <End Role="AvailableTests" Type="Self.AvailableTests" Multiplicity="1" />
+    <End Role="LabTestsConducted" Type="Self.LabTestsConducted" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AvailableTests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabTestsConducted">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_messages_To_messages">
+    <End Role="messages" Type="Self.messages" Multiplicity="0..1" />
+    <End Role="messages1" Type="Self.messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="messages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="messages1">
+        <PropertyRef Name="reply_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="image_news_article_id_fk">
+    <End Role="news" Type="Self.news" Multiplicity="1" />
+    <End Role="images" Type="Self.images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="news">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="images">
+        <PropertyRef Name="news_article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="north_shore_accounts_fk">
+    <End Role="payment_information" Type="Self.payment_information" Multiplicity="0..1" />
+    <End Role="north_shore_accounts" Type="Self.north_shore_accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment_information">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="north_shore_accounts">
+        <PropertyRef Name="payment_info" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="north_shore_accounts_province_fk">
+    <End Role="provinces" Type="Self.provinces" Multiplicity="1" />
+    <End Role="north_shore_accounts" Type="Self.north_shore_accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provinces">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="north_shore_accounts">
+        <PropertyRef Name="province_char" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="north_shore_accounts_user_id_fk">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="north_shore_accounts" Type="Self.north_shore_accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="north_shore_accounts">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="site_id_sd_fk">
+    <End Role="site" Type="Self.site" Multiplicity="1" />
+    <End Role="department" Type="Self.department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="site">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="department">
+        <PropertyRef Name="site_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="username_faq_uf_fk">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="faqs" Type="Self.faqs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="faqs">
+        <PropertyRef Name="publisher_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users_user_role_fk">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="role_code" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="user_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SuperWomanModelStoreContainer">
+    <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AvailableTests" EntityType="Self.AvailableTests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bucketList" EntityType="Self.bucketList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cities" EntityType="Self.cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comments" EntityType="Self.comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="donations" EntityType="Self.donations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="faqs" EntityType="Self.faqs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images_Table" EntityType="Self.Images_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabTestResults" EntityType="Self.LabTestResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabTestsConducted" EntityType="Self.LabTestsConducted" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="messages" EntityType="Self.messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="north_shore_accounts" EntityType="Self.north_shore_accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment_information" EntityType="Self.payment_information" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provinces" EntityType="Self.provinces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="site" EntityType="Self.site" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TourGuides" EntityType="Self.TourGuides" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TourRequests" EntityType="Self.TourRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tours" EntityType="Self.Tours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Volunteers" EntityType="Self.Volunteers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+[database_firewall_rules].[id] AS [id], 
+[database_firewall_rules].[name] AS [name], 
+[database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+[database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+[database_firewall_rules].[create_date] AS [create_date], 
+[database_firewall_rules].[modify_date] AS [modify_date]
+FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="category_faq_cf_fk" Association="Self.category_faq_cf_fk">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="faqs" EntitySet="faqs" />
+    </AssociationSet>
+    <AssociationSet Name="cities_country_code_fk" Association="Self.cities_country_code_fk">
+      <End Role="country" EntitySet="country" />
+      <End Role="cities" EntitySet="cities" />
+    </AssociationSet>
+    <AssociationSet Name="donations_account_id_fk" Association="Self.donations_account_id_fk">
+      <End Role="north_shore_accounts" EntitySet="north_shore_accounts" />
+      <End Role="donations" EntitySet="donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LabTestsC__Docto__37DB1BFD" Association="Self.FK__LabTestsC__Docto__37DB1BFD">
+      <End Role="users" EntitySet="users" />
+      <End Role="LabTestsConducted" EntitySet="LabTestsConducted" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TourReque__TourI__4EBE8155" Association="Self.FK__TourReque__TourI__4EBE8155">
+      <End Role="Tours" EntitySet="Tours" />
+      <End Role="TourRequests" EntitySet="TourRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TourReque__UserI__53833672" Association="Self.FK__TourReque__UserI__53833672">
+      <End Role="users" EntitySet="users" />
+      <End Role="TourRequests" EntitySet="TourRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabTestResults_ToLabTestsConducted" Association="Self.FK_LabTestResults_ToLabTestsConducted">
+      <End Role="LabTestsConducted" EntitySet="LabTestsConducted" />
+      <End Role="LabTestResults" EntitySet="LabTestResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabTestsConducted_ToAvailableTests" Association="Self.FK_LabTestsConducted_ToAvailableTests">
+      <End Role="AvailableTests" EntitySet="AvailableTests" />
+      <End Role="LabTestsConducted" EntitySet="LabTestsConducted" />
+    </AssociationSet>
+    <AssociationSet Name="FK_messages_To_messages" Association="Self.FK_messages_To_messages">
+      <End Role="messages" EntitySet="messages" />
+      <End Role="messages1" EntitySet="messages" />
+    </AssociationSet>
+    <AssociationSet Name="image_news_article_id_fk" Association="Self.image_news_article_id_fk">
+      <End Role="news" EntitySet="news" />
+      <End Role="images" EntitySet="images" />
+    </AssociationSet>
+    <AssociationSet Name="north_shore_accounts_fk" Association="Self.north_shore_accounts_fk">
+      <End Role="payment_information" EntitySet="payment_information" />
+      <End Role="north_shore_accounts" EntitySet="north_shore_accounts" />
+    </AssociationSet>
+    <AssociationSet Name="north_shore_accounts_province_fk" Association="Self.north_shore_accounts_province_fk">
+      <End Role="provinces" EntitySet="provinces" />
+      <End Role="north_shore_accounts" EntitySet="north_shore_accounts" />
+    </AssociationSet>
+    <AssociationSet Name="north_shore_accounts_user_id_fk" Association="Self.north_shore_accounts_user_id_fk">
+      <End Role="users" EntitySet="users" />
+      <End Role="north_shore_accounts" EntitySet="north_shore_accounts" />
+    </AssociationSet>
+    <AssociationSet Name="site_id_sd_fk" Association="Self.site_id_sd_fk">
+      <End Role="site" EntitySet="site" />
+      <End Role="department" EntitySet="department" />
+    </AssociationSet>
+    <AssociationSet Name="username_faq_uf_fk" Association="Self.username_faq_uf_fk">
+      <End Role="users" EntitySet="users" />
+      <End Role="faqs" EntitySet="faqs" />
+    </AssociationSet>
+    <AssociationSet Name="users_user_role_fk" Association="Self.users_user_role_fk">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

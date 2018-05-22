@@ -1,0 +1,86 @@
+﻿@model WebApplication1.Models.feedback
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container-fluid" style="background-color: #076473; color: white; border-radius: 10px;">
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 2%;">
+            <h2 class="text-center">Submitted Form</h2>
+            <h3 class="text-center">Token #@Html.DisplayFor(model => model.feedback_id)</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+            <div>
+                <i class="fas fa-question"></i>
+                1. Please tell us the date and location of your visit:
+            </div>
+            <div>
+                <i class="fas fa-arrow-right"></i>
+                @Html.DisplayFor(model => model.date_location)
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+            <div>
+                <i class="fas fa-question"></i>
+                2. What difficulties did you experience accessing our goods and services?
+            </div>
+            <div>
+                <i class="fas fa-arrow-right"></i>
+                @Html.DisplayFor(model => model.problem)
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+            <div>
+                <i class="fas fa-question"></i>
+                3. What suggestions do you have to help us improve accessibility?
+            </div>
+            <div>
+                <i class="fas fa-arrow-right"></i>
+                @Html.DisplayFor(model => model.suggestion)
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+            <div>
+                <i class="fas fa-question"></i>
+                4. Name and contact details (optional):
+            </div>
+            <div>
+                <i class="fas fa-arrow-right"></i>
+                @Html.DisplayFor(model => model.detail)
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center" style="margin-bottom: 2%;">
+            <p>
+                <input type="submit" value="Delete" class="btn btn-success btn-large feedback_button" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-light btn-large feedback_button" })
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+}

@@ -1,0 +1,86 @@
+﻿@model WebApplication1.Models.appointment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid" style="background-color: #076473; color: white; border-radius: 10px;">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2%;">
+                <h2 class="text-center">Booked Appointment</h2>
+                <h3 class="text-center">Appointment #@Html.DisplayFor(model => model.appointment_id)</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+                <div>
+                    <i class="fas fa-question"></i>
+                    1. Please Enter Your Full Name:
+                </div>
+                <div>
+                    <i class="fas fa-arrow-right"></i>
+                    @Html.DisplayFor(model => model.full_name)
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+                <div>
+                    <i class="fas fa-question"></i>
+                    2. Please Enter Your Phone Number:
+                </div>
+                <div>
+                    <i class="fas fa-arrow-right"></i>
+                    @Html.DisplayFor(model => model.phone_number)
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+                <div>
+                    <i class="fas fa-question"></i>
+                    3. Please choose your preferred appointment date:
+                </div>
+                <div>
+                    <i class="fas fa-arrow-right"></i>
+                    @Html.DisplayFor(model => model.appointment_date)
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-top: 1%; margin-bottom: 1%;">
+                <div>
+                    <i class="fas fa-question"></i>
+                    4. Please give us some details about your visit:
+                </div>
+                <div>
+                    <i class="fas fa-arrow-right"></i>
+                    @Html.DisplayFor(model => model.detail)
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center" style="margin-bottom: 2%;">
+                <p>
+                    <input type="submit" value="Delete" class="btn btn-success btn-large feedback_button" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-light btn-large feedback_button" })
+                </p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+}

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebApplication1.Models.feedback>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["userId"] != null)
+{
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Token #</th>
+                        <th>Feedback Form Submission Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (Convert.ToString(Session["role"]) == "ADM" && item.user_id == Convert.ToInt64(Session["userId"]))
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.feedback_id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.date_submitted)</td>
+                                <td>
+                                    @Html.ActionLink("View", "Details", new { id = item.feedback_id }, new { @class = "btn btn-large feedback_button_view feedback_button_actions" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.feedback_id }, new { @class = "btn btn-dark btn-large feedback_button_actions" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.feedback_id }, new { @class = "btn btn-danger btn-large" })
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.feedback_id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.date_submitted)</td>
+                                <td>
+                                    @Html.ActionLink("View", "Details", new { id = item.feedback_id }, new { @class = "btn btn-large feedback_button_view feedback_button_actions" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.feedback_id }, new { @class = "btn btn-dark btn-large feedback_button_actions" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.feedback_id }, new { @class = "btn btn-danger btn-large" })
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Create", "feedback", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid" style="background-color: #076473; color: white; border-radius: 10px;">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2%;">
+                <h2 class="text-center">FEEDBACK FORM</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="margin-bottom: 2%;">
+                <div class="form-group">
+                    <label for="date_location">1. Please tell us the date and location of your visit:</label>
+                    <input class="form-control" style="min-width: 100%" type="text" name="date_location" id="date_location" required>
+                </div>
+                <div class="form-group">
+                    <label for="problem">2. What difficulties did you experience accessing our goods and services?</label>
+                    <textarea class="form-control" style="min-width: 100%" rows="5" name="problem" id="problem" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="suggestion">3. What suggestions do you have to help us improve accessibility?</label>
+                    <textarea class="form-control" style="min-width: 100%" rows="5" name="suggestion" id="suggestion" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="detail">4. Name and contact details (optional):</label>
+                    <textarea class="form-control" style="min-width: 100%" rows="5" name="detail" id="detail"></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="d-inline-block btn feedback_button_submit" value="Submit">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+}
+

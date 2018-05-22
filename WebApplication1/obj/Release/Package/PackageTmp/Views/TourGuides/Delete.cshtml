@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.TourGuide
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TourGuide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideSpeciality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideSpeciality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuideSuitability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuideSuitability)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

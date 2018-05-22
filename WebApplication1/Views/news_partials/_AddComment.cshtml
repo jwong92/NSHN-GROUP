@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.User_News_Comments
+@using (Ajax.BeginForm("AddComment", "news", new { id = Model.news.id }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "CommentBox",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    if (Session["userId"] != null)
+    {
+        <div class="form-group">
+            <hr />
+            <h3>Add a comment</h3>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.comment.comment1, 5, 10, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.comment.comment1)
+            </div>
+        </div>
+        <input type="submit" value="Add Comment" class="btn" />
+    }
+
+    <div id="CommentBox">@Html.Action("DisplayComments", "news", new { id = Model.news.id })</div>
+
+}
+

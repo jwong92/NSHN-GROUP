@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - North Shore Health Network</title>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/FAQ.js"></script>
+    <script src="~/Scripts/jessicaScript.js"></script>
+    <link href="~/Content/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/faqsIndex.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans|Oxygen" rel="stylesheet">
+
+    @* CUSTOM R-SCRIPT *@
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    @*link bootstrap here
+        <link href="views/public/css/bootstrap.css" rel="stylesheet">*@
+    <!--link RESPONSIVE CSS here-->
+    <link href="~/Content/style-responsive.css" rel="stylesheet">
+    <!-- Link Custom styles for this template -->
+    <link href="~/Content/style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    @if (Session["role"] != null)
+    {
+        if (Session["role"].ToString() == "ADM")
+        {
+            <div id="container">
+                <!-- **********************************************************************************************************************************************************
+                TOP BAR CONTENT & NOTIFICATION
+                *********************************************************************************************************************************************************** -->
+                <!--header start-->
+                <header class="header">
+                    <div class="sidebar-toggle-box ham">
+                        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                    </div>
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav navbar-right top-menu">
+                        @if (Session["userId"] != null)
+                        {
+                            <li class="top-menu">
+                                @Html.ActionLink("Logout", "LoggedOut", "Account", null, new { @class = "logout", hidefocus = "hidefocus" })
+                                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "logout", hidefocus = "hidefocus" })
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </header>
+
+                <!-- **********************************************************************************************************************************************************
+                MAIN SIDEBAR MENU
+                *********************************************************************************************************************************************************** -->
+                <!--sidebar start (DEPEND ON USER ROLE THE NAVIGATION CHANGES)-->
+                <aside class="menu">
+                    <div id="sidebar" class="nav-collapse ">
+                        <!-- sidebar menu start-->
+                        <ul class="sidebar-menu" id="nav-accordion">
+                            <!--<p class="centered"><a href="#"><img src="," class="img-circle" width="70"></a></p>-->
+                            <div class="nshn">NSHN</div>
+                            <h5 class="centered">Hello, @Session["userName"].ToString()</h5>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-user-md dash-white-icon"></i>
+                                @Html.ActionLink("Welcome", "LoginLanding", "Navigate")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-question dash-white-icon"></i>
+                                @Html.ActionLink("FAQ", "Index", "faqs")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-hospital dash-white-icon"></i>
+                                @Html.ActionLink("Departments", "Index", "departments")
+                            </li>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-newspaper dash-white-icon"></i>
+                                @Html.ActionLink("News", "Index", "news")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-hand-holding-usd dash-white-icon"></i>
+                                @Html.ActionLink("Donations", "Index", "Donations")
+                            </li>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-users dash-white-icon"></i>
+                                @Html.ActionLink("Donation Accounts", "AcctPayInfo", "Donations")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-user-circle dash-white-icon"></i>
+                                @Html.ActionLink("Register User", "Register", "Account")
+                            </li>
+                        </ul>
+                        <!-- sidebar menu end-->
+                    </div>
+                </aside>
+            </div>
+            <main>
+                @RenderBody()
+            </main>
+        }
+        else if (Session["role"].ToString() == "USR" || Session["role"].ToString() == "PAT")
+        {
+            <div id="container">
+                <!-- **********************************************************************************************************************************************************
+                TOP BAR CONTENT & NOTIFICATION
+                *********************************************************************************************************************************************************** -->
+                <!--header start-->
+                <header class="header">
+                    <div class="sidebar-toggle-box ham">
+                        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                    </div>
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav navbar-right top-menu">
+                        @if (Session["userId"] != null)
+                        {
+                            <li class="top-menu">
+                                @Html.ActionLink("Logout", "LoggedOut", "Account", null, new { @class = "logout", hidefocus = "hidefocus" })
+                                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "logout", hidefocus = "hidefocus" })
+                            </li>
+                        }                        
+                        </ul>
+                    </div>
+                </header>
+
+                <!-- **********************************************************************************************************************************************************
+                MAIN SIDEBAR MENU
+                *********************************************************************************************************************************************************** -->
+                <!--sidebar start (DEPEND ON USER ROLE THE NAVIGATION CHANGES)-->
+                <aside class="menu">
+                    <div id="sidebar" class="nav-collapse ">
+                        <!-- sidebar menu start-->
+                        <ul class="sidebar-menu" id="nav-accordion">
+                            <!--<p class="centered"><a href="#"><img src="," class="img-circle" width="70"></a></p>-->
+                            <div class="nshn">NSHN</div>
+                            <h5 class="centered">Hello, @Session["userName"].ToString()</h5>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-user dash-white-icon"></i>
+                                @Html.ActionLink("Welcome", "LoginLanding", "Navigate")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-question dash-white-icon"></i>
+                                @Html.ActionLink("FAQ", "Index", "faqs")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-map-marker dash-white-icon"></i>
+                                @Html.ActionLink("Site Location", "Index", "sites")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-hospital dash-white-icon"></i>
+                                @Html.ActionLink("Departments", "Index", "departments")
+                            </li>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-vials dash-white-icon"></i>
+                                @Html.ActionLink("Lab Results", "Index", "LabTestResults")
+                            </li>
+                            <li class="sub-menu">
+                                <i class="fas fa-notes-medical dash-white-icon"></i>
+                                @Html.ActionLink("Book Appointments", "Index", "appointments")
+                            </li>
+
+                            <li class="sub-menu">
+                                <i class="fas fa-hand-holding-usd dash-white-icon"></i>
+                                @Html.ActionLink("Donate", "Create", "donations")
+                            </li>
+                        </ul>
+                        <!-- sidebar menu end-->
+                    </div>
+                </aside>
+                </div>
+                <main>
+                    @RenderBody()
+                </main>
+                }
+                else
+                {
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-container">
+                    <div class="col-md-3">
+                        <a class="navbar-brand" href="~/Home/Index">
+                            <img id="main-logo" src="~/Images/logo.png" />
+                        </a>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="row">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <div class="col-md-4">
+                                    @if (Session["role"] == null)
+                                    {
+                                        <a class="nav-link" href="~/Account/Register">Register</a>
+                                    }
+                                </div>
+                                <div class="col-md-4">
+                                    @if (Session["userId"] != null)
+                                    {
+                                        @Html.ActionLink("Logout", "LoggedOut", "Account", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    }
+                                </div>
+                                @*<form class="form-inline my-2 my-lg-0 col-md-7 col-md-7">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </form>*@
+                                <div class="col-lg-2 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="row">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="~/Home/Index">Home<span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Navigate/About">About</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Patients & Visitors</a>
+                                        <div class="dropdown-menu">
+                                            @Html.ActionLink("Book Appointment", "Index", "appointments", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Lab Results", "Index", "LabTestResults", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Departments", "Index", "departments", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Hospital Sites", "Index", "sites", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("FAQ", "Index", "faqs", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Programs & Services</a>
+                                        <div class="dropdown-menu">
+                                            <a class="nav-link dropdown-item" href="~/news/Index">News</a>
+                                            @Html.ActionLink("Tours", "Index", "Tours", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opportunities</a>
+                                        <div class="dropdown-menu">
+                                            @Html.ActionLink("Volunteer", "create", "volunteers", null, new { @class = "nav-link, dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Contact Us", "Create", "messages", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    </li>
+                                    <li>
+                                        @if (Session["role"] != null)
+                                        {
+                                            @Html.ActionLink("Donate", "Create", "Donations", null, new { @class = "donate-btn nav-link", hidefocus = "hidefocus" })
+
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Donate", "Create", "Donations", null, new { @class = "donate-btn nav-link", hidefocus = "hidefocus" })
+                                        }
+                                    </li>
+                                    @if (Session["role"] != null)
+                                    {
+                                        //IF USER IS LOGGED IN, ALLOW THEM TO GO TO LANDING PAGE
+                                        @Html.ActionLink("Welcome", "LoginLanding", "Navigate")
+
+                                            @*<li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Admin
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    @Html.ActionLink("List All Donors", "Index", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Accounts", "AcctPayInfo", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Volunteers", "Index", "Volunteers", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Hospital Sites", "Index", "sites", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List News Articles", "Index", "news", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List Hospital Departments", "Index", "departments", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List FAQs", "Index", "faqs", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Messages", "Index", "messages", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("Register A Donor", "Create", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add a Volunteer", "Create", "Volunteers", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add a FAQ", "Create", "faqs", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add News Article", "Index", "news", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("List All Laboratory Tests", "Index", "AvailableTests", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Lab Tests Conducted", "Index", "LabTestsConducteds", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Laboratory Results", "Index", "LabTestResults", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("Add a User", "Register", "Account", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                </div>
+                                            </li>*@
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                @* END NAVIGATION BAR *@
+                @*@Html.Action("_BannerImage", "Navigate")*@
+                <div class="container body-content">
+
+                    @RenderBody()
+                </div>
+                }
+                }
+                else
+                {
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-container">
+                    <div class="col-md-3">
+                        <a class="navbar-brand" href="~/Home/Index">
+                            <img id="main-logo" src="~/Images/logo.png" />
+                        </a>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="row">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <div class="col-md-4">
+                                    @if (Session["role"] == null)
+                                    {
+                                        <a class="nav-link" href="~/Account/Register">Register</a>
+                                    }
+                                </div>
+                                <div class="col-md-4">
+                                    @if (Session["userId"] != null)
+                                    {
+                                        @Html.ActionLink("Logout", "LoggedOut", "Account", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    }
+                                </div>
+                                @*<form class="form-inline my-2 my-lg-0 col-md-7 col-md-7">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </form>*@
+                                <div class="col-lg-2 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="row">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="~/Home/Index">Home<span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Navigate/About">About</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Patients & Visitors</a>
+                                        <div class="dropdown-menu">
+                                            @Html.ActionLink("Book Appointment", "Index", "appointments", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Lab Results", "Index", "LabTestResults", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Departments", "Index", "departments", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("Hospital Sites", "Index", "sites", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                            @Html.ActionLink("FAQ", "Index", "faqs", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Programs & Services</a>
+                                        <div class="dropdown-menu">
+                                            <a class="nav-link dropdown-item" href="~/news/Index">News</a>
+                                            @Html.ActionLink("Tours", "Index", "Tours", null, new { @class = "nav-link dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opportunities</a>
+                                        <div class="dropdown-menu">
+                                            @Html.ActionLink("Volunteer", "create", "volunteers", null, new { @class = "nav-link, dropdown-item", hidefocus = "hidefocus" })
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Contact Us", "Create", "messages", null, new { @class = "nav-link", hidefocus = "hidefocus" })
+                                    </li>
+                                    <li>
+                                        @if (Session["role"] != null)
+                                        {
+                                            @Html.ActionLink("Donate", "Create", "Donations", null, new { @class = "donate-btn nav-link", hidefocus = "hidefocus" })
+
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Donate", "Create", "Donations", null, new { @class = "donate-btn nav-link", hidefocus = "hidefocus" })
+                                        }
+                                    </li>
+                                    @if (Session["role"] != null)
+                                    {
+                                        //IF USER IS LOGGED IN, ALLOW THEM TO GO TO LANDING PAGE
+                                        @Html.ActionLink("Welcome", "LoginLanding", "Navigate")
+                                        @*if (Session["role"].ToString() == "ADM")
+                                        {
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Admin
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    @Html.ActionLink("List All Donors", "Index", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Accounts", "AcctPayInfo", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Volunteers", "Index", "Volunteers", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Hospital Sites", "Index", "sites", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List News Articles", "Index", "news", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List Hospital Departments", "Index", "departments", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List FAQs", "Index", "faqs", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Messages", "Index", "messages", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("Register A Donor", "Create", "Donations", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add a Volunteer", "Create", "Volunteers", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add a FAQ", "Create", "faqs", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("Add News Article", "Index", "news", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("List All Laboratory Tests", "Index", "AvailableTests", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Lab Tests Conducted", "Index", "LabTestsConducteds", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    @Html.ActionLink("List All Laboratory Results", "Index", "LabTestResults", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                    <div class="dropdown-divider"></div>
+                                                    @Html.ActionLink("Add a User", "Register", "Account", null, new { @class = "dropdown-item", hidefocus = "hidefocus" })
+                                                </div>
+                                            </li>
+                                        }*@
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                @* END NAVIGATION BAR *@
+                @*@Html.Action("_BannerImage", "Navigate")*@
+                <div class="container body-content">
+
+                    @RenderBody()
+                </div>
+                }
+                @*<footer class="bg-light">
+
+                    <div class="col-md-10 bg-light">
+                        <nav class="navbar navbar-light align-items-start " id="footer-text1">
+                            <span class="navbar-brand mb-0 h1 col-md-1 col-sm-12">Home</span>
+                            <div class="d-flex flex-column" id="footer-text2">
+                                <span class="navbar-brand mb-0 h1 col-md-2 col-sm-12">Patients & Visitors</span>
+                                <a class="navbar-brand col-md-3 col-sm-12" href="#">Patients</a>
+                                <a class="navbar-brand col-md-3 col-sm-12" href="#">Visitors</a>
+                                <a class="navbar-brand col-md-3 col-sm-12" href="#">Book Appointments</a>
+                                <a class="navbar-brand col-md-3 col-sm-12" href="#">Lab Results</a>
+                            </div>
+                            <span class="navbar-brand mb-0 h1 col-md-2 col-sm-12">Programs & Services</span>
+                            <span class="navbar-brand mb-0 h1 col-md-2 col-sm-12">Opportunities</span>
+                            <div class="d-flex flex-column" id="footer-text2">
+                                <span class="navbar-brand mb-0 h1 col-md-2 col-sm-12">Contact Us</span>
+                                <a class="navbar-brand col-md-3 col-sm-12" href="~/feedback/Index">Feedback</a>
+                            </div>
+                        </nav>
+                    </div>
+                    <p id="footer-p">&copy; @DateTime.Now.Year - North Shore Health Network</p>
+                </footer>*@
+
+                <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+        </body>
+</html>
+<!-- toggle hamburger jQuery -->
+<script>
+    $(".ham").click(function () {
+        $(".menu").toggle();
+    });
+</script>

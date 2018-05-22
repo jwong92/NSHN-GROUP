@@ -1,0 +1,34 @@
+﻿@model WebApplication1.Models.IndexView
+
+@if(Model.image.Count() == 0)
+{
+    <p id="no-news">No Recent News Available.</p>
+}
+
+@foreach (var i in Model.image)
+{
+    foreach (var n in Model.news)
+    {
+        if (i.news_article_id == n.id)
+        {
+            if (i.is_main == 1)
+            {
+                    <div class="card">
+                        <a href="~/news/Details/@n.id" class="list-group-item-action">
+
+                        <div id="img-container">
+                            <img class="card-img-top" src="~/News_Images/@n.id/@i.img_src" alt="Article 1">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@n.title</h5>
+                            <p class="card-text">@n.article_summary</p>
+                            <p class="card-text">
+                                <small class="text-muted">Published on: @n.pub_date.Year-@n.pub_date.Month-@n.pub_date.Day</small>
+                            </p>
+                        </div>
+                            </a>
+                    </div>
+            }
+        }
+    }
+}
